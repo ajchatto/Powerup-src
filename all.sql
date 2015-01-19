@@ -1,0 +1,117 @@
+CREATE TABLE `Customers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_first_name` varchar(45) DEFAULT NULL,
+  `student_last_name` varchar(45) DEFAULT NULL,
+  `student_email_address` varchar(45) DEFAULT NULL,
+  `student_phone` varchar(45) DEFAULT NULL,
+  `parent_first_name` varchar(45) DEFAULT NULL,
+  `parent_last_name` varchar(45) DEFAULT NULL,
+  `parent_email_address` varchar(45) DEFAULT NULL,
+  `parent_cell_phone` varchar(45) DEFAULT NULL,
+  `parent_work_phone` varchar(45) DEFAULT NULL,
+  `parent_home_phone` varchar(45) DEFAULT NULL,
+  `address1` varchar(45) DEFAULT NULL,
+  `address2` varchar(45) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `postal` varchar(45) DEFAULT NULL,
+  `payment_mode` varchar(45) DEFAULT NULL,
+  `card_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1015 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Enrollment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provider_id` int(11) DEFAULT NULL,
+  `provider_name` varchar(45) DEFAULT NULL,
+  `offering_id` int(11) DEFAULT NULL,
+  `offering_name` varchar(45) DEFAULT NULL,
+  `offering_schedule_id` int(11) DEFAULT NULL,
+  `student_contact_id` int(11) DEFAULT NULL,
+  `student_contact_name` varchar(45) DEFAULT NULL,
+  `parent_contact_id` int(11) DEFAULT NULL,
+  `parent_contact_name` varchar(45) DEFAULT NULL,
+  `start_date` varchar(45) DEFAULT NULL,
+  `offering_days` varchar(45) DEFAULT NULL,
+  `start_offering_time` varchar(45) DEFAULT NULL,
+  `end_offering_time` varchar(45) DEFAULT NULL,
+  `payment_mode` varchar(45) DEFAULT NULL,
+  `student_first_name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1004 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Offering` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provider_id` int(11) DEFAULT NULL,
+  `provider_name` varchar(45) DEFAULT NULL,
+  `name` varchar(45) NOT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `category` varchar(45) DEFAULT NULL COMMENT 'MUSIC, DANCE, ART, MATH, LANGUGAGE, SPORTS, GYM, what else ?',
+  `image1` blob,
+  `image2` blob,
+  `image3` blob,
+  `video_url` varchar(45) DEFAULT NULL,
+  `start_date` varchar(20) DEFAULT NULL,
+  `end_date` varchar(20) DEFAULT NULL,
+  `duration` varchar(45) DEFAULT NULL COMMENT '30 min, 1 hr, 2 hrs, 1 day, 2 days etc.',
+  `days` varchar(100) DEFAULT NULL COMMENT 'Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday',
+  `schedule` varchar(100) DEFAULT NULL COMMENT 'de-normalized schedule',
+  `age` varchar(45) DEFAULT NULL,
+  `grade` varchar(45) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `price_unit` varchar(45) DEFAULT NULL COMMENT 'Price per class or whole year etc',
+  `credt_card_accepted` varchar(10) DEFAULT NULL COMMENT 'Yes, No',
+  `enable_review` varchar(10) DEFAULT NULL,
+  `frequency` varchar(45) DEFAULT 'WEEKLY',
+  `sun` varchar(45) DEFAULT NULL,
+  `mon` varchar(45) DEFAULT NULL,
+  `tue` varchar(45) DEFAULT NULL,
+  `wed` varchar(45) DEFAULT NULL,
+  `thu` varchar(45) DEFAULT NULL,
+  `fri` varchar(45) DEFAULT NULL,
+  `sat` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1004 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Offering_Schedule` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `offering_id` varchar(45) DEFAULT NULL,
+  `start_date` varchar(45) DEFAULT NULL,
+  `end_date` varchar(45) DEFAULT NULL,
+  `start_time` varchar(45) DEFAULT NULL,
+  `end_time` varchar(45) DEFAULT NULL,
+  `days` varchar(45) DEFAULT NULL,
+  `no_of_seats` int(11) DEFAULT NULL,
+  `available_seats` int(11) DEFAULT NULL,
+  `sunday` varchar(45) DEFAULT NULL,
+  `monday` varchar(45) DEFAULT NULL,
+  `tuesday` varchar(45) DEFAULT NULL,
+  `wednesday` varchar(45) DEFAULT NULL,
+  `thursday` varchar(45) DEFAULT NULL,
+  `friday` varchar(45) DEFAULT NULL,
+  `saturday` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1022 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Provider` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `image` varchar(45) DEFAULT NULL,
+  `url` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `address1` varchar(45) DEFAULT NULL,
+  `address2` varchar(45) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `postal_code` varchar(45) DEFAULT NULL,
+  `contact_name` varchar(45) DEFAULT NULL,
+  `contact_email` varchar(45) DEFAULT NULL,
+  `contact_phone` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=latin1;
+
+
+
