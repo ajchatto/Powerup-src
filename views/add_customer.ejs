@@ -1,0 +1,118 @@
+<%- include layouts/header.ejs %>
+
+
+    <div class="container">
+  	<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+<div class="container provider_detail" itemscope="" itemtype="http://schema.org/LocalBusiness">
+
+       <div class="row"> 
+
+          </div>
+            <div class="subsection description">
+
+      <div class="span12">
+          <ul class="nav nav-tabs" id="reviews_tab">
+              <li class="active"><a href="#activities" data-toggle="tab">Edit Customer</a></li> 
+          </ul>
+
+          <div class="tab-content">
+
+<!-- Ajoy modified 
+<table id="schedule_table" class="table tablesorter">
+-->
+<form method="post" action="/customers/add">
+<table>
+<p>
+
+    <tr>
+      <th align="left">Student</th><td><input type="text" placeholder="First Name" name="student_first_name" required></td>
+      <td><input type="text" placeholder="Last Name" name="student_last_name" required></td>
+    </tr>
+    </tr>
+      <th nowrap align="left">Student Contact</th><td><input type="text" placeholder="Email address"  name="student_email_address" </td>
+      <td><input type="text" placeholder="Phone" name="student_phone" </td>
+    </tr>
+
+
+    <tr>
+      <th align="left">Parent</th><td><input type="text" placeholder="First Name" name="parent_first_name" required></td>
+      <td><input type="text" placeholder="Last Name" name="parent_last_name" required></td>
+    </tr>
+    </tr>
+      <th nowrap align="left">Parent Contact</th><td><input placeholder="Email address" type="text" name="parent_email_address" </td>
+      <td><input  type="text" placeholder="Cell Phone" name="parent_cell_phone" </td>
+      <td><input  type="text" placeholder="Work Phone" name="parent_work_phone" </td>
+      <td><input  type="text" placeholder="Home Phone" name="parent_home_phone" </td>
+    </tr>
+
+    <tr>
+      <th align="left">Address</th>
+      <td><input type="text" placeholder="Address line 1" name="address1" </td>
+      <td><input type="text" placeholder="Address line 2" name="address2" </td>
+    </tr>
+    <tr>
+      <td> &nbsp;</td>
+      <td><input type="text" placeholder="City" name="city" </td>
+      <td><input type="text" placeholder="State" name="state" </td>
+      <td><input type="text" placeholder="Postal" name="postal" </td>
+    </tr>
+
+    <tr>
+      <th nowrap align="left">Payment</th>
+      <td>
+      <select class="input-medium" id="payment_mode" name="payment_mode">
+	<option value="Credit Card">Credit Card</option>
+	<option value="Cash">Cash</option>
+	<option value="Check">Check</option>
+      </select>
+
+      <td> 
+      <select class="input-medium" id="card_type" name="card_type">
+	<option value="Amex">American Express</option>
+	<option value="Master">Master</option>
+	<option value="Visa">Visa</option>
+	<option value="Discover">Discover</option>
+	<option value="" selected></option>
+      </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan=5>
+        <center>
+         <input type="submit" class="btn btn btn-primary button-rounded" name="submit" value="Save"> 
+         <a href="/customers" class="btn btn btn-primary button-rounded">Cancel</a>
+        </center>
+      </td>
+    </tr>							
+</table>
+
+</form>
+</div>
+	
+
+          </div> <!-- .tab-content -->
+      </div> <!-- .span12 -->
+    </div>
+</div> <!-- .container -->
+
+
+<footer>
+
+    <div class="container">
+            <div class="span3">
+		    <a href="http://www.powerup.com/pages/about">
+		    <h4>About Us</h4>
+		    </a>
+            </div>
+
+            <div class="span3">
+            	    <a href="http://www.powerup.com/contacts/contact_admin">
+	            <h4>Contact Us</h4>
+		    </a>
+            </div>
+
+        </div>
+    </div> <!-- .container -->
+</footer>
+

@@ -1,0 +1,141 @@
+<%- include layouts/header.ejs %>
+
+    <div class="container">
+  	<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+<div class="container provider_detail" itemscope="" itemtype="http://schema.org/LocalBusiness">
+
+       <div class="row"> 
+
+          </div>
+            <div class="subsection description">
+
+      <div class="span12">
+          <ul class="nav nav-tabs" id="reviews_tab">
+              <li class="active"><a href="#activities" data-toggle="tab">Add Offering</a></li> 
+          </ul>
+
+          <div class="tab-content">
+
+
+<!-- Ajoy modified -->
+<table id="schedule_table" class="table tablesorter">
+<form method="post" action="/offerings/add">
+<table>
+    <tr>
+      <td>Class name</td><td><input type="text" name="name" required></td>
+
+      <td>Category</td>
+<td>
+<select class="input-small" name="category">
+<option value="Swim" selected >Swim</option>
+<option value="Art">Art</option>
+<option value="Karate">Karate</option>
+</select>
+</td>
+
+    </tr>
+    <tr>
+      <td>Age / Grade</td>
+      <td>
+<select class="input-small" id="age" name="age" prompt="All Ages">
+<option value="0-2 yrs.">0-2 yrs.</option>
+<option value="2-4 yrs.">2-4 yrs.</option>
+<option value="4-7 yrs.">4-7 yrs.</option>
+<option value="7-12 yrs.">7-12 yrs.</option>
+<option value="12+ yrs.">12+ yrs.</option>
+</select>
+</td>
+    </tr>
+
+    <tr>
+      <td>Start Date</td><td><input type="text" name="start_date"></td>
+      <td>End Date</td><td><input type="text" name="end_date"></td>
+    </tr>
+
+    <tr>
+      <td>Frequency</td>
+      <td>
+<select class="input-small" id="frequency" name="frequency">
+<option value="One day">One day</option>
+<option value="Two days">Two days</option>
+<option value="Three days">Three days</option>
+<option value="Every day">Every day</option>
+</select>
+</td>
+    </tr>
+
+    <tr>
+      <td>Duration</td>
+<td>
+<select class="input-small" name="duration">
+<option value="30 mins.">30 mins.</option>
+<option value="45 mins.">45 mins.</option>
+<option value="1 hr">1 hr</option>
+<option value="1.5 hr">1.5 hrs.</option>
+<option value="2 hrs.">2 hrs.</option>
+</select>
+</td>
+
+      <td>Days</td>
+      <td>
+      <input type="Checkbox" name='sun' value='Y' >Sun
+      <input type="Checkbox" name='mon' value='Y' >Mon
+      <input type="Checkbox" name='tue' value='Y' >Tue
+      <input type="Checkbox" name='wed' value='Y' >Wed
+      <input type="Checkbox" name='thu' value='Y' >Thu
+      <input type="Checkbox" name='fri' value='Y' >Fri
+      <input type="Checkbox" name='sat' value='Y' >Sat
+    </tr>
+
+    <tr>
+      <td>Price</td><td><input type="text" name="price" required></td>
+    </tr>
+
+    <tr>
+      <td>Price Unit</td><td><input type="text" name="price_unit" value="per class"></td>
+    </tr>
+    <tr>
+	<td></td><td>
+	<td></td><td>
+	<td></td><td>
+        <center>
+         <input type="submit" class="btn btn btn-primary button-rounded" name="submit" value="Save"> 
+         <input type="button" class="btn btn btn-primary button-rounded" name="cancel" value="Cancel" onClick="cancelAdd()">
+        </center>
+        </td>
+    </tr>							
+</table>
+
+</form>
+</div>
+	
+
+
+
+	
+
+          </div> <!-- .tab-content -->
+      </div> <!-- .span12 -->
+    </div>
+</div> <!-- .container -->
+
+
+
+<footer>
+
+    <div class="container">
+            <div class="span3">
+		    <a href="http://www.powerup.com/pages/about">
+		    <h4>About Us</h4>
+		    </a>
+            </div>
+
+            <div class="span3">
+            	    <a href="http://www.powerup.com/contacts/contact_admin">
+	            <h4>Contact Us</h4>
+		    </a>
+            </div>
+
+        </div>
+    </div> <!-- .container -->
+</footer>

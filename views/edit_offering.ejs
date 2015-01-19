@@ -1,0 +1,143 @@
+<%- include layouts/header.ejs %>
+
+
+    <div class="container">
+  	<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+<div class="container provider_detail" itemscope="" itemtype="http://schema.org/LocalBusiness">
+
+       <div class="row"> 
+
+          </div>
+            <div class="subsection description">
+
+      <div class="span12">
+          <ul class="nav nav-tabs" id="reviews_tab">
+              <li class="active"><a href="#activities" data-toggle="tab">Edit Offering</a></li> 
+          </ul>
+
+          <div class="tab-content">
+
+<!-- Ajoy modified 
+<table id="schedule_table" class="table tablesorter">
+-->
+<form method="post" action="/offerings/edit/<%=data[0].id%>">
+<table ">
+<p>
+
+    <tr>
+      <td>Class name</td><td><input type="text" name="name" value="<%=data[0].name%>" required></td>
+      <td>Category</td>
+<td>
+<select class="input-small" name="category"><option selected="selected" value="<%=data[0].category%>"><%=data[0].category%></option>
+<option value="Swim">Swim</option>
+<option value="Art">Art</option>
+<option value="Karate">Karate</option>
+</select>
+</td>
+    </tr>
+
+    <tr>
+      <td>Age / Grade</td>
+      <td>
+<select class="input-small" id="age" name="age" prompt="All Ages"><option selected="selected" value="<%=data[0].age%>"><%=data[0].age%></option>
+<option value="0-2 yrs.">0-2 yrs.</option>
+<option value="2-4 yrs.">2-4 yrs.</option>
+<option value="4-7 yrs.">4-7 yrs.</option>
+<option value="7-12 yrs.">7-12 yrs.</option>
+<option value="12+ yrs.">12+ yrs.</option>
+</select>
+</td>
+    </tr>
+
+    <tr>
+      <td>Start Date</td><td><input type="text" value="<%=data[0].start_date%>" name="start_date"> </td>
+      <td>End Date</td><td><input type="text" value="<%=data[0].end_date%>" name="end_date"> </td>
+    </tr>
+
+    <tr>
+      <td>Frequency</td>
+      <td>
+<select class="input-small" id="frequency" name="frequency">
+<option selected="selected" value="<%=data[0].frequency%>"><%=data[0].frequency%></option>
+<option value="One day">One day</option>
+<option value="Two days">Two days</option>
+<option value="Three days">Three days</option>
+<option value="Every day">Every day</option>
+</select>
+</td>
+    </tr>
+
+    <tr>
+      <td>Duration</td>
+      <td>
+<select class="input-small" name="duration"><option selected="selected" value="<%=data[0].duration%>"><%=data[0].duration%></option>
+<option value="30 mins.">30 mins.</option>
+<option value="45 mins.">45 mins.</option>
+<option value="1 hr">1 hr</option>
+<option value="1.5 hr">1.5 hrs.</option>
+<option value="2 hrs.">2 hrs.</option>
+</select>
+</td>
+      <td>Days</td>
+      <td>
+      <input type="Checkbox" name='sun' value='Y' <%=data[0].sunday%>>Sun
+      <input type="Checkbox" name='mon' value='Y' <%=data[0].monday%>>Mon
+      <input type="Checkbox" name='tue' value='Y' <%=data[0].tueday%>>Tue
+      <input type="Checkbox" name='wed' value='Y' <%=data[0].wedday%>>Wed
+      <input type="Checkbox" name='thu' value='Y' <%=data[0].thuday%>>Thu
+      <input type="Checkbox" name='fri' value='Y' <%=data[0].friday%>>Fri
+      <input type="Checkbox" name='sat' value='Y' <%=data[0].satday%>>Sat
+      </td>
+    </tr>
+
+    <tr>
+      <td>Price</td><td><input type="text" value="<%=data[0].price%>" name="price" required></td>
+      <td></td>
+      <td><input type="text" value="<%=data[0].days%>" name="days" disabled></td>
+    </tr>
+
+    <tr>
+      <td>Price Unit</td><td><input type="text" value="<%=data[0].price_unit%>" name="price_unit"></td>
+    </tr>
+    <tr>
+	<td></td><td>
+	<td></td><td>
+        <center>
+         <input type="submit" class="btn btn btn-primary button-rounded" name="submit" value="Save"> 
+         <input type="submit" class="btn btn btn-primary button-rounded" name="submit" value="Delete"> 
+         <input type="button" class="btn btn btn-primary button-rounded" name="cancel" value="Cancel" onClick="cancelAdd()">
+        <a href="http://localhost:4300/schedules/edit/1001" class="btn btn btn-primary button-rounded">Schedule</a>
+        </center>
+        </td>
+    </tr>							
+</table>
+
+</form>
+</div>
+	
+
+          </div> <!-- .tab-content -->
+      </div> <!-- .span12 -->
+    </div>
+</div> <!-- .container -->
+
+
+<footer>
+
+    <div class="container">
+            <div class="span3">
+		    <a href="http://www.powerup.com/pages/about">
+		    <h4>About Us</h4>
+		    </a>
+            </div>
+
+            <div class="span3">
+            	    <a href="http://www.powerup.com/contacts/contact_admin">
+	            <h4>Contact Us</h4>
+		    </a>
+            </div>
+
+        </div>
+    </div> <!-- .container -->
+</footer>
+

@@ -1,0 +1,239 @@
+<%- include layouts/header.ejs %>
+
+      <div class="span12">
+          <ul class="nav nav-tabs" id="reviews_tab">
+              <li class="active"><a data-toggle="tab">Offerings</a></li> 
+              <li class="inactive"><a href="enrollments" data-toggle="tab">Enrollments</a></li> 
+              <li class="inactive"><a href="customers" data-toggle="tab">Customers</a></li> 
+              <li class="inactive"><a href="reports" data-toggle="tab">Reports</a></li> 
+          </ul>
+
+          <div class="tab-content">
+
+              <div id="activities" class="activities tab-pane active">
+		<div style="display: none;" id="indicator1" class="ajax-progress-relative">
+		</div>
+                  <div id="activities_ajax">
+
+<div class="search-filter" style="margin-top:10px;">
+
+<form name=search accept-charset="UTF-8" action="/offerings/search" class="form-inline" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+
+	<div>
+		<label><strong>Filters: &nbsp;</strong></label>
+			<label>
+			<select class="input-small" name="category"><option selected="selected" value="">All Categories</option>
+<option value="Swim">Swim</option>
+<option value="Art">Art</option>
+<option value="Karate">Karate</option>
+</select>
+			<select class="input-small" id="age" name="age" prompt="All Ages"><option selected="selected" value="">All Ages</option>
+<option value="1.0">1</option>
+<option value="2.0">2</option>
+<option value="3.0">3</option>
+<option value="4.0">4</option>
+<option value="5.0">5</option>
+<option value="6.0">6</option>
+<option value="7.0">7</option>
+<option value="8.0">8</option>
+<option value="9.0">9</option>
+<option value="10.0">10</option>
+<option value="11.0">11</option>
+<option value="12.0">12</option>
+<option value="13.0">13</option>
+<option value="14.0">14</option>
+<option value="15.0">15</option>
+<option value="16.0">16</option>
+<option value="17.0">17</option>
+<option value="18.0">18</option>
+<option value="19.0">19</option>
+<option value="20.0">20</option>
+<option value="21.0">21</option>
+<option value="99.0">Adult</option></select>
+			</label>
+		<label>
+    <input class="input-small hasDatepicker" id="filter_start_date" name="filter[start_date]" onchange="reloadActivities()" placeholder="Start Date" size="30" type="text">
+    <input class="input-small hasDatepicker" id="filter_end_date" name="filter[end_date]" onchange="reloadActivities()" placeholder="End Date" size="30" type="text">
+	  <label class="checkbox"><input id="classes" name="classes" onclick="reloadActivities()" value="true" type="checkbox">Classes</label> 
+	  <label class="checkbox"><input id="camps" name="camps" onclick="reloadActivities()" value="true" type="checkbox">Camps</label> 
+         <input type="submit" class="btn btn btn-primary button-rounded" name="submit" value="Search"> 
+  </label></div> 
+</form></div> 
+
+<!-- Ajoy modified -->
+
+<table id="schedule_table" class="table table-striped">
+  <thead>
+    <tr>
+      <th class="header">No</th>
+      <th class="header" width="150px">Power Program</th>
+      <th class="header">Category</th>
+      <th class="ages header">Ages / Grades</th>
+      <th class="date header">Dates</th>
+      <th class="times header">Duration</th>
+      <th class="times header">Days</th>
+      <th class="price header">Price</th>
+      <th class="contact header"> <a href="/offerings/add" class="btn btn-info"><i class="icon-heart"></i>Create Offering</a></th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% if(data.length){
+
+                 for(var i = 0;i < data.length;i++) { %>
+
+
+      <tr>
+        <td><%=data[i].id%></td>
+	<td>
+          <a class="a-inside edit" href="../offerings/edit/<%=data[i].id%>"><%=data[i].name%></a>
+   	  <br>
+	  <a href="http://www.powerup.com/biz/2886-the-dance-affair-san-jose-ca/20135-birthday-party-package/55873" class="btn btn-mini" rel="" target="_blank">More Info</a>
+	</td>
+        <td> <%=data[i].category%></td>
+        <td><%=data[i].age%></td>
+        <td><%=data[i].start_date + ' - ' + data[i].end_date%></td>
+        <td><%=data[i].duration%></td>
+        <td><%=data[i].days%></td>
+        <td>$<%=data[i].price + ' ' + data[i].price_unit%></td>
+
+        <td>                    
+          <center>
+          	<a href="../enrollments/add/<%=data[i].id%>" class="btn btn btn-primary button-rounded" rel="nofollow">Select<i class="icon-shopping-cart"></i></a>
+							
+          </center>
+        </td>
+      </tr> 
+
+            <% }
+
+             }else{ %>
+                 <tr>
+                    <td colspan="3">No user</td>
+                 </tr>
+            <% } %>
+
+
+  </tbody>
+</table>
+</div>
+              </div> <!-- #reviews.reviews -->
+              <div id="reviews" class="reviews tab-pane ">
+									<div style="display: none;" id="indicator2" class="ajax-progress-relative">
+									</div>
+                  <div id="reviews_ajax"><br>
+<div class="endorsements">
+	<div id="indicator" class="ajax-progress-relative">
+	</div>
+	
+      <form accept-charset="UTF-8" action="/endorsements" class="attribute-form" id="new_endorsement" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="f4Do5zxcmhGp8QAeB3jSbgCfNm8BUMHP3/vDe2Vl+hc=" type="hidden"></div>
+        <input id="endorsement_endorsement_attribute_id" name="endorsement[endorsement_attribute_id]" value="1" type="hidden">
+        <input id="endorsement_provider_id" name="endorsement[provider_id]" value="2358" type="hidden">
+        <input id="endorsement_provider_location_id" name="endorsement[provider_location_id]" value="2886" type="hidden">
+				<div class="btn-group">
+				  <button type="submit" onclick="submit_endorsement();" title="Do you like this?" class="btn btn-info "><i class="icon-heart"></i> Love It</button>
+				</div>      
+</form>      <form accept-charset="UTF-8" action="/endorsements" class="attribute-form" id="new_endorsement" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="f4Do5zxcmhGp8QAeB3jSbgCfNm8BUMHP3/vDe2Vl+hc=" type="hidden"></div>
+        <input id="endorsement_endorsement_attribute_id" name="endorsement[endorsement_attribute_id]" value="2" type="hidden">
+        <input id="endorsement_provider_id" name="endorsement[provider_id]" value="2358" type="hidden">
+        <input id="endorsement_provider_location_id" name="endorsement[provider_location_id]" value="2886" type="hidden">
+				<div class="btn-group">
+				  <button type="submit" onclick="submit_endorsement();" title="Have you been here?" class="btn btn-info "><i class="icon-ok"></i> Been There</button>
+				  	<button class="btn btn-info ">2</button>
+				</div>      
+</form>      <form accept-charset="UTF-8" action="/endorsements" class="attribute-form" id="new_endorsement" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="f4Do5zxcmhGp8QAeB3jSbgCfNm8BUMHP3/vDe2Vl+hc=" type="hidden"></div>
+        <input id="endorsement_endorsement_attribute_id" name="endorsement[endorsement_attribute_id]" value="3" type="hidden">
+        <input id="endorsement_provider_id" name="endorsement[provider_id]" value="2358" type="hidden">
+        <input id="endorsement_provider_location_id" name="endorsement[provider_location_id]" value="2886" type="hidden">
+				<div class="btn-group">
+				  <button type="submit" onclick="submit_endorsement();" title="Do you want to bookmark this?" class="btn btn-info "><i class="icon-bookmark"></i> Bookmark</button>
+				</div>      
+</form></div>
+
+
+
+<br>
+<p>
+ </p><form accept-charset="UTF-8" action="/provider_locations/2886-the-dance-affair-san-jose-ca/reviews" class="new_review" id="new_review" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="f4Do5zxcmhGp8QAeB3jSbgCfNm8BUMHP3/vDe2Vl+hc=" type="hidden"></div>
+
+
+
+<input id="review_overall_rating" name="review[overall_rating]" type="hidden">
+
+<h4>How likely are you to recommend <a href="http://www.powerup.com/biz/2886-the-dance-affair-san-jose-ca">Sutton Swim School </a> to a friend?</h4>
+
+ <div id="rating-star-container">
+   <span class="star-rating-control"><div class="rating-cancel"><a title="Cancel Rating"></a></div><div id="review_overall_rating_1" class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="Never">1</a></div><div id="review_overall_rating_2" class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="Maybe Not">2</a></div><div id="review_overall_rating_3" class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="Maybe">3</a></div><div id="review_overall_rating_4" class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="Very Likely">4</a></div><div id="review_overall_rating_5" class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="Absolutely">5</a></div></span><input style="display: none;" class="star star-rating-applied" id="review_overall_rating_1" name="review[overall_rating]" title="Never" value="1" type="radio">
+   <input style="display: none;" class="star star-rating-applied" id="review_overall_rating_2" name="review[overall_rating]" title="Maybe Not" value="2" type="radio">
+   <input style="display: none;" class="star star-rating-applied" id="review_overall_rating_3" name="review[overall_rating]" title="Maybe" value="3" type="radio">
+   <input style="display: none;" class="star star-rating-applied" id="review_overall_rating_4" name="review[overall_rating]" title="Very Likely" value="4" type="radio">
+   <input style="display: none;" class="star star-rating-applied" id="review_overall_rating_5" name="review[overall_rating]" title="Absolutely" value="5" type="radio">
+ </div>
+
+<p>Your Comment</p>
+<div id="rankingplace-post">
+ <textarea class="span11" cols="40" id="review_review_text" name="review[review_text]" rows="20" style="height:100px;"></textarea>
+</div> 
+<div>
+		<input class="btn btn-primary" id="review_submit" name="commit" value="Submit" type="submit">
+</div> 
+
+</form>
+
+	
+<p></p>
+</div>
+              </div> <!-- #reviews.reviews -->
+
+          </div> <!-- .tab-content -->
+      </div> <!-- .span12 -->
+    </div>
+</div> <!-- .container -->
+
+
+
+
+<div id="giveaway_modal" class="modal hide" style="width:500px;">
+  <button type="button" class="close" style="margin-right: 5px;margin-top: 5px;" data-dismiss="modal" aria-hidden="true">×</button>
+  <div class="modal-body">
+		<center><a href="http://www.powerup.com/registrations/new?activity_schedule_id=90671"><img src="ClassSchedule_files/win-100-seal.png" style="width:200px" align="top"></a>
+  	<h2>
+	  		    Get $100 off any activity*
+    </h2>
+		</center>
+    <p>*One lucky winner can choose any activity listed on powerup's <a href="http://www.powerup.com/search?easy_enroll=true&amp;b=v1">EasyEnroll page</a>. Winner will get $100 discount on the activity fee. </p>
+    <p>100's of activities to choose from: Art, Theatre, Writing, Sports, Science, Overnight, and more!</p>
+		<center>
+    <p><a href="http://www.powerup.com/registrations/new?activity_schedule_id=90671&amp;aht_src=AHProvider-popup-2358&amp;aht_cam=giveaway" class="btn btn-primary btn-large button-rounded input-large">ENTER TO WIN</a>
+		<br><strong>Hurry, ends soon</strong>
+ 		</p>
+		</center>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  });
+</script>
+    </div>
+  	<footer>
+
+    <div class="container">
+            <div class="span3">
+		    <a href="http://www.powerup.com/pages/about">
+		    <h4>About Us</h4>
+		    </a>
+            </div>
+
+            <div class="span3">
+            	    <a href="http://www.powerup.com/contacts/contact_admin">
+	            <h4>Contact Us</h4>
+		    </a>
+            </div>
+
+        </div>
+    </div> <!-- .container -->
+</footer>
+
+
+

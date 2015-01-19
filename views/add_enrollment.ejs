@@ -1,0 +1,224 @@
+<%- include layouts/header.ejs %>
+
+
+    <div class="container">
+  	<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+<div class="container provider_detail" itemscope="" itemtype="http://schema.org/LocalBusiness">
+
+       <div class="row"> 
+
+          </div>
+            <div class="subsection description">
+
+      <div class="span12">
+          <ul class="nav nav-tabs" id="reviews_tab">
+              <li class="active"><a href="#activities" data-toggle="tab">Enrollment</a></li> 
+          </ul>
+
+          <div class="tab-content">
+
+<!-- Ajoy modified -->
+
+<form method="post" action="/enrollments/add">
+<input type=hidden name=provider_id value=<%= offering_data[0].provider_id%> >
+<input type=hidden name=provider_name value='<%= offering_data[0].provider_name%>' >
+<input type=hidden name=offering_id value=<%= offering_data[0].id%> >
+<input type=hidden name=offering_name value='<%= offering_data[0].name%>' >
+
+<!-- Offering table -->
+<table id="schedule_table" class="table table-striped">
+  <thead>
+    <tr>
+      <th class="header">No</th>
+      <th class="header" width="150px">Power Program</th>
+      <th class="header">Category</th>
+      <th class="ages header">Ages / Grades</th>
+      <th class="date header">Dates</th>
+      <th class="times header">Duration</th>
+      <th class="times header">Days</th>
+      <th class="price header">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      <tr>
+        <td><%=offering_data[0].id%></td>
+        <td>
+          <a class="a-inside edit" href="../offerings/edit/<%=offering_data[0].id%>"><%=offering_data[0].name%></a>
+          <br>
+          <a href="http://www.powerup.com/biz/2886-the-dance-affair-san-jose-ca/20135-birthday-party-package/55873" class="btn btn-mini" rel="" target="_blank">More Info</a>
+        </td>
+        <td> <%=offering_data[0].category%></td>
+        <td><%=offering_data[0].age%></td>
+        <td><%=offering_data[0].start_date + ' - ' + offering_data[0].end_date%></td>
+        <td><%=offering_data[0].duration%></td>
+        <td><%=offering_data[0].days%></td>
+        <td>$<%=offering_data[0].price + ' ' + offering_data[0].price_unit%></td>
+
+        </td>
+      </tr>
+</tbody>
+</table>
+
+
+
+<table class="table">
+  <tr>
+    <td>
+
+<%
+  var today = "";
+  for(var i = 0;i < offering_schedule_data.length;i++) {
+  
+  if (today == "") {
+    today =  offering_schedule_data[i].days;
+%>
+<table class="table table-striped">
+<thead>
+      <tr><th class="header">
+        <%= offering_schedule_data[0].days %>
+      </th><tr>
+      <tr>
+      <th></th>
+      <th>Start time</th>
+      <th>End Time</th>
+      <th>Seats</th>
+    </tr>
+</thead>
+
+<%
+}
+  if (today != offering_schedule_data[i].days) {
+  today = offering_schedule_data[i].days;
+%>
+</table>
+</td>
+<td>
+<table class="table table-striped">
+<thead>
+      <tr><th class="header">
+        <%= offering_schedule_data[i].days %>
+      </th><tr>
+      <tr>
+      <th></th>
+      <th>Start time</th>
+      <th>End Time</th>
+      <th>Seats</th>
+    </tr>
+</thead>
+
+<% } %> 
+      <tr>
+        <td><input type=checkbox name=offering_schedule_id value=<%=offering_schedule_data[i].id%> ></td>
+        <td> <%=offering_schedule_data[i].start_time%></td>
+        <td> <%=offering_schedule_data[i].end_time%></td>
+        <td> <%=offering_schedule_data[i].no_of_seats%></td>
+
+      </tr>
+
+<% } %> 
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<!-- Customer info -->
+
+<table ">
+<p>
+
+    <tr>
+      <th align="left">Student</th><td><input type="text" placeholder="First Name" name="student_first_name" required></td>
+      <td><input type="text" placeholder="Last Name" name="student_last_name" required></td>
+    </tr>
+    </tr>
+      <th nowrap align="left">Student Contact</th><td><input type="text" placeholder="Email address"  name="student_email_address" </td>
+      <td><input type="text" placeholder="Phone" name="student_phone" </td>
+    </tr>
+
+
+    <tr>
+      <th align="left">Parent</th><td><input type="text" placeholder="First Name" name="parent_first_name" required></td>
+      <td><input type="text" placeholder="Last Name" name="parent_last_name" required></td>
+    </tr>
+    </tr>
+      <th nowrap align="left">Parent Contact</th><td><input placeholder="Email address" type="text" name="parent_email_address" </td>
+      <td><input  type="text" placeholder="Cell Phone" name="parent_cell_phone" </td>
+      <td><input  type="text" placeholder="Work Phone" name="parent_work_phone" </td>
+      <td><input  type="text" placeholder="Home Phone" name="parent_home_phone" </td>
+    </tr>
+
+    <tr>
+      <th align="left">Address</th>
+      <td><input type="text" placeholder="Address line 1" name="address1" </td>
+      <td><input type="text" placeholder="Address line 2" name="address2" </td>
+    </tr>
+    <tr>
+      <td> &nbsp;</td>
+      <td><input type="text" placeholder="City" name="city" </td>
+      <td><input type="text" placeholder="State" name="state" </td>
+      <td><input type="text" placeholder="Postal" name="postal" </td>
+    </tr>
+
+    <tr>
+      <th nowrap align="left">Payment</th>
+      <td>
+      <select class="input-medium" id="payment_mode" name="payment_mode">
+        <option value="Credit Card">Credit Card</option>
+        <option value="Cash">Cash</option>
+        <option value="Check">Check</option>
+      </select>
+
+      <td>
+      <select class="input-medium" id="card_type" name="card_type">
+        <option value="Amex">American Express</option>
+        <option value="Master">Master</option>
+        <option value="Visa">Visa</option>
+        <option value="Discover">Discover</option>
+        <option value="" selected></option>
+      </select>
+      </td>
+    </tr>
+
+</table>
+<!-- Customer info -->
+
+
+
+<table>
+  <tr>
+    <td><input type=submit class="btn btn btn-primary button-rounded" rel="nofollow" value="Enroll"> 
+    </td>
+  </tr>
+</table>
+
+</form>
+
+
+  </div> <!-- .tab-content -->
+      </div> <!-- .span12 -->
+    </div>
+</div> <!-- .container -->
+
+
+<footer>
+
+    <div class="container">
+            <div class="span3">
+		    <a href="http://www.powerup.com/pages/about">
+		    <h4>About Us</h4>
+		    </a>
+            </div>
+
+            <div class="span3">
+            	    <a href="http://www.powerup.com/contacts/contact_admin">
+	            <h4>Contact Us</h4>
+		    </a>
+            </div>
+
+        </div>
+    </div> <!-- .container -->
+</footer>
+

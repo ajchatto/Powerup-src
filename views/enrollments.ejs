@@ -1,0 +1,78 @@
+<%- include layouts/header.ejs %>
+
+      <div class="span12">
+          <ul class="nav nav-tabs">
+              <li class="inactive"><a href="offerings" data-toggle="tab">Offerings</a></li>
+              <li class="active"><a data-toggle="tab">Enrollments</a></li>
+              <li class="inactive"><a href="customers" data-toggle="tab">Customers</a></li>
+              <li class="inactive"><a href="reports" data-toggle="tab">Reports</a></li>
+          </ul>
+
+          <div class="tab-content">
+
+<!-- Ajoy modified -->
+
+<table id="customer_table" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Parent </th>
+      <th>Parent contact</th>
+      <th>Provider Name</th>
+      <th>Offering Name</th>
+      <th>Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Enrolled</th>
+    </tr>
+</thead>
+
+<%
+  for(var i = 0;i < data.length;i++) {
+%>
+
+      <tr>
+        <td nowrap><%=data[i].student_contact_name%> </td>
+        <td nowrap><%=data[i].parent_contact_name%> </td>
+        <td><%=data[i].parent_email_address%>, <BR> <%= data[i].parent_cell_phone%> </td>
+        <td><%=data[i].provider_name%> </td>
+        <td><%=data[i].offering_name%> </td>
+        <td><%=data[i].start_date%> </td>
+        <td><%=data[i].start_offering_time%> </td>
+        <td><%=data[i].end_offering_time%> </td>
+        <td><%=data[i].enrolled_date%> </td>
+
+      </tr>
+<%
+}
+%>
+
+</table>
+
+
+
+          </div> <!-- .tab-content -->
+      </div> <!-- .span12 -->
+    </div>
+</div> <!-- .container -->
+
+
+<footer>
+
+    <div class="container">
+            <div class="span3">
+		    <a href="http://www.powerup.com/pages/about">
+		    <h4>About Us</h4>
+		    </a>
+            </div>
+
+            <div class="span3">
+            	    <a href="http://www.powerup.com/contacts/contact_admin">
+	            <h4>Contact Us</h4>
+		    </a>
+            </div>
+
+        </div>
+    </div> <!-- .container -->
+</footer>
+
